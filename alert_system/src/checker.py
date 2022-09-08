@@ -28,7 +28,7 @@ class Checker:
         try:
             while True:
                 if not event_handler.get_is_worked():  # Imagine that this line is not here
-                    time.sleep(1)
+                    time.sleep(5)
                 else:                                  # And this
                     raise KeyboardInterrupt            # And this too
         except KeyboardInterrupt:

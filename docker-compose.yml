@@ -17,7 +17,6 @@ services:
     volumes:
       - logs:/app/logs
 
-
   client_emulator:
     image: client_emulator:latest
     networks:

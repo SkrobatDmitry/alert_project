@@ -31,10 +31,10 @@ class LogHandler:
 
                 alert_df = error_level_handler(data_df)
                 alert_df = notification_rule_handler(alert_df)
-                writer.write_df_to_json(f'{result_folder}'
-                                        f'{Path(path).stem}_'
-                                        f'{notification_rule_handler.get_notification_rule_name().lower()}_'
-                                        f'{error_level_handler.get_error_level_name().lower()}.json', alert_df)
+                writer.write_df_to_csv(f'{result_folder}'
+                                       f'{Path(path).stem}_'
+                                       f'{notification_rule_handler.get_notification_rule_name().lower()}_'
+                                       f'{error_level_handler.get_error_level_name().lower()}.csv', alert_df)
 
             print(f'[+] {Path(path).name} has been processed')
         except Exception as e:
