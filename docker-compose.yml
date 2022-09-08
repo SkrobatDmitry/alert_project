@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  alert_system:
+    image: alert_system:latest
+    volumes:
+      - logs:/app/logs
+      - processed_logs:/app/processed_logs
+
+  server_emulator:
+    image: server_emulator:latest
+    networks:
+      alert_net:
+        ipv4_address: 172.22.0.2
+    depends_on:
+      - alert_system
+    volumes:
+      - logs:/app/logs
+
+
+  client_emulator:
+    image: client_emulator:latest
+    networks:
+      alert_net:
+        ipv4_address: 172.22.0.3
+    depends_on:
+      - server_emulator
+
+volumes:
+  logs:
+  processed_logs:
+
+networks:
+  alert_net:
+    ipam:
+      config:
+        - subnet: 172.22.0.0/29
+          gateway: 172.22.0.1
