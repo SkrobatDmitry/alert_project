@@ -31,6 +31,7 @@ class LogHandler:
 
                 alert_df = error_level_handler(data_df)
                 alert_df = notification_rule_handler(alert_df)
+                # For demo, alerts are simply written to a csv file
                 writer.write_df_to_csv(f'{result_folder}'
                                        f'{Path(path).stem}_'
                                        f'{notification_rule_handler.get_notification_rule_name().lower()}_'
